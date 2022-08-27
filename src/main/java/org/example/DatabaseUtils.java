@@ -1,17 +1,19 @@
 package org.example;
 
-import lombok.experimental.UtilityClass;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-@UtilityClass
-public class DatabaseUtils {
+public final class DatabaseUtils {
     private static SessionFactory factory;
 
-    public void uninitializeDatabase() {
+    private DatabaseUtils() {
+        // No-op.
+    }
+
+    public static void uninitializeDatabase() {
         if (factory != null) {
             factory.close();
 
@@ -19,16 +21,16 @@ public class DatabaseUtils {
         }
     }
 
-    public void reinitializeDatabase() {
+    public static void reinitializeDatabase() {
         uninitializeDatabase();
         initializeDatabase();
     }
 
-    public Session openSession() {
+    public static Session openSession() {
         return getFactory().openSession();
     }
 
-    private SessionFactory getFactory() {
+    private static SessionFactory getFactory() {
         if (factory == null) {
             initializeDatabase();
         }
