@@ -3,22 +3,25 @@ package org.example.ch4;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringJoiner;
 
 @Entity(name = "Email")
 public class Email {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
     private String subject;
 
-    @OneToOne
-    private Message message;
+    @OneToMany(mappedBy = "email", orphanRemoval = true)
+    private Set<Message> messages = new HashSet<Message>();
 
     public Email() {
         // No-op.
@@ -44,12 +47,12 @@ public class Email {
         this.subject = subject;
     }
 
-    public Message getMessage() {
-        return message;
+    public Set<Message> getMessages() {
+        return messages;
     }
 
-    public void setMessage(Message message) {
-        this.message = message;
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 
     @Override
@@ -57,7 +60,7 @@ public class Email {
         return new StringJoiner(", ", Email.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("subject='" + subject + "'")
-                .add("message.content=" + (message == null ? "" : message.getContent()))
+                .add("message.content=" + (messages == null ? "" : messages.size()))
                 .toString();
     }
 }

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.example.DatabaseUtils.openSession;
 import static org.example.DatabaseUtils.reinitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class BrokenInversionTest {
     @BeforeEach
@@ -22,7 +21,7 @@ public class BrokenInversionTest {
 
         Email email = new Email("BrokenSubject");
 
-        email.setMessage(message);
+        message.setEmail(email);
 
         try(Session session = openSession()) {
             session.beginTransaction();
@@ -33,8 +32,8 @@ public class BrokenInversionTest {
             session.getTransaction().commit();
         }
 
-        assertNotNull(email.getMessage());
-        assertNull(message.getEmail());
+        assertNotNull(email.getMessages());
+        assertNotNull(message.getEmail());
 
         try(Session session = openSession()) {
             email = session.get(Email.class, email.getId());
@@ -44,8 +43,8 @@ public class BrokenInversionTest {
             System.out.println(message);
         }
 
-        assertNotNull(email.getMessage());
-        assertNull(message.getEmail());
+        assertNotNull(email.getMessages());
+        assertNotNull(message.getEmail());
     }
 
     @AfterEach
