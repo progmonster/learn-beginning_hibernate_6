@@ -13,9 +13,12 @@
 <!--        <mapping class="org.example.ch2.Message"/>
         <mapping class="org.example.ch3.Person"/>
         <mapping class="org.example.ch3.Skill"/>
-        <mapping class="org.example.ch3.Ranking"/>-->
+        <mapping class="org.example.ch3.Ranking"/>
         <mapping class="org.example.ch4.Message"/>
         <mapping class="org.example.ch4.Email"/>
         <mapping class="org.example.ch4.SimpleObject"/>
+-->
+        <mapping class="org.example.ch5.User"/>
+        <mapping class="org.example.ch5.Email"/>
     </session-factory>
 </hibernate-configuration>

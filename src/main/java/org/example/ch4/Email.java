@@ -21,7 +21,7 @@ public class Email {
     private String subject;
 
     @OneToMany(mappedBy = "email", orphanRemoval = true)
-    private Set<Message> messages = new HashSet<Message>();
+    private Set<Message> messages = new HashSet<>();
 
     public Email() {
         // No-op.

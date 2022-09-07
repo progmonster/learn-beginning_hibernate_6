@@ -1,5 +1,6 @@
 package org.example.ch4;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class Message {
     @Column
     private String content;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Email email;
 
     public Message(String content) {

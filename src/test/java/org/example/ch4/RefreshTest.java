@@ -1,5 +1,6 @@
 package org.example.ch4;
 
+import org.example.ValidateSimpleObject;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,48 +10,35 @@ import static org.example.DatabaseUtils.openSession;
 import static org.example.DatabaseUtils.reinitializeDatabase;
 import static org.example.DatabaseUtils.uninitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
-public class PersistTest {
+public class RefreshTest {
     @BeforeEach
     void setUp() {
         reinitializeDatabase();
     }
 
     @Test
-    void testPersistAndEqualityInSessions() {
-        SimpleObject obj1 = new SimpleObject();
-
-        SimpleObject obj2;
-
-        SimpleObject obj3;
+    void testRefresh() {
+        SimpleObject obj = new SimpleObject("key1", 123);
 
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            session.persist(obj1);
+            session.persist(obj);
 
             session.getTransaction().commit();
-
-            obj2 = session.get(SimpleObject.class, obj1.getId());
         }
 
-        assertEquals(obj1, obj2);
-        assertSame(obj1, obj2);
-
+        obj.setValue(234);
 
         try (Session session = openSession()) {
-            obj3 = session.get(SimpleObject.class, obj1.getId());
-
-
+            session.refresh(obj);
         }
 
-        assertEquals(obj1, obj3);
-        assertNotSame(obj1, obj3);
+        assertEquals(obj.getValue(), 123);
+
+        ValidateSimpleObject.validate(obj.getId(), "key1", 123);
     }
-
-
 
     @AfterEach
     void tearDown() {

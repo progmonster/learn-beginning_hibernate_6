@@ -1,5 +1,6 @@
 package org.example.ch4;
 
+import org.example.ValidateSimpleObject;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,45 +13,43 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public class PersistTest {
+public class MergeTest {
     @BeforeEach
     void setUp() {
         reinitializeDatabase();
     }
 
     @Test
-    void testPersistAndEqualityInSessions() {
-        SimpleObject obj1 = new SimpleObject();
-
-        SimpleObject obj2;
-
-        SimpleObject obj3;
+    void testMerge() {
+        SimpleObject obj = new SimpleObject("key1", 123);
 
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            session.persist(obj1);
+            session.persist(obj);
 
             session.getTransaction().commit();
-
-            obj2 = session.get(SimpleObject.class, obj1.getId());
         }
 
-        assertEquals(obj1, obj2);
-        assertSame(obj1, obj2);
+        obj.setValue(234);
 
+        SimpleObject mergedObj;
 
         try (Session session = openSession()) {
-            obj3 = session.get(SimpleObject.class, obj1.getId());
+            session.beginTransaction();
 
+            mergedObj = session.merge(obj);
 
+            assertEquals(obj, mergedObj);
+            assertNotSame(obj, mergedObj);
+
+            assertSame(mergedObj, session.merge(mergedObj));
+
+            session.getTransaction().commit();
         }
 
-        assertEquals(obj1, obj3);
-        assertNotSame(obj1, obj3);
+        ValidateSimpleObject.validate(obj.getId(), "key1", 234);
     }
-
-
 
     @AfterEach
     void tearDown() {
