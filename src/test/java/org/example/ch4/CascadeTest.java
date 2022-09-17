@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.example.DatabaseUtils.openSession;
 import static org.example.DatabaseUtils.reinitializeDatabase;
+import static org.example.DatabaseUtils.uninitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -22,7 +23,6 @@ public class CascadeTest {
 
         Message message = new Message("text1");
 
-        //email.getMessages().add(message);
         message.setEmail(email);
 
         try (Session session = openSession()) {
@@ -41,10 +41,8 @@ public class CascadeTest {
         }
     }
 
-    // TODO: 07/09/22 check how types of cascade operations and relation ownership correlate with each other
-
     @AfterEach
     void tearDown() {
-        //uninitializeDatabase();
+        uninitializeDatabase();
     }
 }

@@ -39,11 +39,8 @@ public class PersistTest {
         assertEquals(obj1, obj2);
         assertSame(obj1, obj2);
 
-
         try (Session session = openSession()) {
             obj3 = session.get(SimpleObject.class, obj1.getId());
-
-
         }
 
         assertEquals(obj1, obj3);

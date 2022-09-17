@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.example.DatabaseUtils.*;
+import static org.example.DatabaseUtils.openSession;
+import static org.example.DatabaseUtils.reinitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PersistenceTest {
@@ -19,7 +20,7 @@ public class PersistenceTest {
 
     @AfterEach
     void tearDown() {
-        uninitializeDatabase();
+//        uninitializeDatabase();
     }
 
     @Test
@@ -30,7 +31,7 @@ public class PersistenceTest {
 
         try(Session session = openSession()) {
             actualMessages = session
-                    .createQuery("from Message", Message.class)
+                    .createQuery("from Ch2Message", Message.class)
                     .list();
         }
 

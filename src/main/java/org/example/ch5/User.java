@@ -5,10 +5,16 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import java.util.StringJoiner;
+
+import static jakarta.persistence.CascadeType.PERSIST;
+import static jakarta.persistence.CascadeType.REMOVE;
 
 @Entity(name = "users")
 public class User {
@@ -19,11 +25,14 @@ public class User {
     @Column
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = {PERSIST, REMOVE})
     private Email email;
 
     @Embedded
     private Address address;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = PERSIST)
+    private Set<Card> cards = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -57,16 +66,24 @@ public class User {
         this.address = address;
     }
 
+    public Set<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(Set<Card> cards) {
+        this.cards = cards;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
-        return Objects.equals(getId(), user.getId()) && getName().equals(user.getName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getAddress(), user.getAddress());
+        return Objects.equals(getId(), user.getId()) && Objects.equals(getName(), user.getName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getAddress(), user.getAddress()) && Objects.equals(getCards(), user.getCards());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getEmail(), getAddress());
+        return Objects.hash(getId(), getName(), getEmail(), getAddress(), getCards());
     }
 
     @Override
@@ -76,6 +93,7 @@ public class User {
                 .add("name='" + name + "'")
                 .add("email=" + email)
                 .add("address=" + address)
+                .add("cards=" + cards)
                 .toString();
     }
 }

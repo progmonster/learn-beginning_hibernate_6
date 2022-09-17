@@ -58,7 +58,7 @@ public class SimpleObject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof SimpleObject that)) return false;
-        return Objects.equals(getId(), that.getId()) && getKey().equals(that.getKey()) && Objects.equals(getValue(), that.getValue());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getKey(), that.getKey()) && Objects.equals(getValue(), that.getValue());
     }
 
     @Override
