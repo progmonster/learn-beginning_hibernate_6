@@ -13,5 +13,5 @@ public interface RankingService {
 
     Map<String, Integer> getAllSubjectRankingAverages(String subjectName);
 
-    Person findBestPersonBySkill(String skillName);
+    Ch3Person findBestPersonBySkill(String skillName);
 }

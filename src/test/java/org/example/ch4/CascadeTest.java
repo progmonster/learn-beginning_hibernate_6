@@ -19,9 +19,9 @@ public class CascadeTest {
 
     @Test
     void testCascadePersist() {
-        Email email = new Email("subj1");
+        Ch4Email email = new Ch4Email("subj1");
 
-        Message message = new Message("text1");
+        Ch4Message message = new Ch4Message("text1");
 
         message.setEmail(email);
 
@@ -35,8 +35,8 @@ public class CascadeTest {
 
         try (Session session = openSession()) {
             assertAll(
-                    () -> assertNotNull(session.get(Email.class, email.getId())),
-                    () -> assertNotNull(session.get(Message.class, message.getId()))
+                    () -> assertNotNull(session.get(Ch4Email.class, email.getId())),
+                    () -> assertNotNull(session.get(Ch4Message.class, message.getId()))
             );
         }
     }

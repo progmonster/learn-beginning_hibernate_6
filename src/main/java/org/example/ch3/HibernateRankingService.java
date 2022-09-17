@@ -28,9 +28,9 @@ public class HibernateRankingService implements RankingService {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            Query<Ranking> query = session
+            Query<Ch3Ranking> query = session
                     .createQuery(
-                            "from Ranking r where r.subject.name = :subjectName and r.skill.name = :skillName", Ranking.class
+                            "from Ch3Ranking r where r.subject.name = :subjectName and r.skill.name = :skillName", Ch3Ranking.class
                     );
 
             query.setParameter("subjectName", subject);
@@ -39,7 +39,7 @@ public class HibernateRankingService implements RankingService {
             IntSummaryStatistics stats = query
                     .list()
                     .stream()
-                    .collect(summarizingInt(Ranking::getRanking));
+                    .collect(summarizingInt(Ch3Ranking::getRanking));
 
             session.getTransaction().commit();
 
@@ -52,7 +52,7 @@ public class HibernateRankingService implements RankingService {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            Ranking ranking = findRanking(session, subjectName, observerName, skillName);
+            Ch3Ranking ranking = findRanking(session, subjectName, observerName, skillName);
 
             if (ranking == null) {
                 addRanking(session, subjectName, observerName, skillName, rank);
@@ -70,7 +70,7 @@ public class HibernateRankingService implements RankingService {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            Ranking ranking = findRanking(session, subjectName, observerName, skillName);
+            Ch3Ranking ranking = findRanking(session, subjectName, observerName, skillName);
 
             if (ranking != null) {
                 session.remove(ranking);
@@ -86,7 +86,7 @@ public class HibernateRankingService implements RankingService {
             session.beginTransaction();
 
             Query<Tuple> query = session.createQuery(
-                    "select r.skill.name as skillName, avg(r.ranking) as rank from Ranking r" +
+                    "select r.skill.name as skillName, avg(r.ranking) as rank from Ch3Ranking r" +
                             " where r.subject.name = :subjectName group by r.skill", Tuple.class
             );
 
@@ -106,22 +106,22 @@ public class HibernateRankingService implements RankingService {
     }
 
     @Override
-    public Person findBestPersonBySkill(String skillName) {
+    public Ch3Person findBestPersonBySkill(String skillName) {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            Query<Person> query = session.createQuery(
-                    "select r.subject from Ranking r" +
+            Query<Ch3Person> query = session.createQuery(
+                    "select r.subject from Ch3Ranking r" +
                             " where r.skill.name = :skillName" +
                             " group by r.subject" +
                             " order by avg(r.ranking) desc",
-                    Person.class
+                    Ch3Person.class
             );
 
             query.setParameter("skillName", skillName);
             query.setMaxResults(1);
 
-            Person bestPerson = query.uniqueResult();
+            Ch3Person bestPerson = query.uniqueResult();
 
             session.getTransaction().commit();
 
@@ -129,19 +129,19 @@ public class HibernateRankingService implements RankingService {
         }
     }
 
-    private static Person findPerson(Session session, String name) {
-        Query<Person> query = session.createQuery("from Person p where p.name = :name", Person.class);
+    private static Ch3Person findPerson(Session session, String name) {
+        Query<Ch3Person> query = session.createQuery("from Ch3Person p where p.name = :name", Ch3Person.class);
 
         query.setParameter("name", name);
 
         return query.uniqueResult();
     }
 
-    private static Person savePerson(Session session, String name) {
-        Person person = findPerson(session, name);
+    private static Ch3Person savePerson(Session session, String name) {
+        Ch3Person person = findPerson(session, name);
 
         if (person == null) {
-            person = new Person();
+            person = new Ch3Person();
 
             person.setName(name);
 
@@ -151,19 +151,19 @@ public class HibernateRankingService implements RankingService {
         return person;
     }
 
-    private static Skill findSkill(Session session, String name) {
-        Query<Skill> query = session.createQuery("from Skill p where p.name = :name", Skill.class);
+    private static Ch3Skill findSkill(Session session, String name) {
+        Query<Ch3Skill> query = session.createQuery("from Ch3Skill p where p.name = :name", Ch3Skill.class);
 
         query.setParameter("name", name);
 
         return query.uniqueResult();
     }
 
-    private static Skill saveSkill(Session session, String name) {
-        Skill skill = findSkill(session, name);
+    private static Ch3Skill saveSkill(Session session, String name) {
+        Ch3Skill skill = findSkill(session, name);
 
         if (skill == null) {
-            skill = new Skill();
+            skill = new Ch3Skill();
 
             skill.setName(name);
 
@@ -174,13 +174,13 @@ public class HibernateRankingService implements RankingService {
     }
 
     private static void addRanking(Session session, String subjectName, String observerName, String skillName, int rank) {
-        Person observer = savePerson(session, observerName);
+        Ch3Person observer = savePerson(session, observerName);
 
-        Person subject = savePerson(session, subjectName);
+        Ch3Person subject = savePerson(session, subjectName);
 
-        Skill skill = saveSkill(session, skillName);
+        Ch3Skill skill = saveSkill(session, skillName);
 
-        Ranking ranking = new Ranking();
+        Ch3Ranking ranking = new Ch3Ranking();
 
         ranking.setSubject(subject);
         ranking.setObserver(observer);
@@ -190,14 +190,14 @@ public class HibernateRankingService implements RankingService {
         session.persist(ranking);
     }
 
-    private static Ranking findRanking(Session session, String subjectName, String observerName, String skill) {
-        Query<Ranking> query = session
+    private static Ch3Ranking findRanking(Session session, String subjectName, String observerName, String skill) {
+        Query<Ch3Ranking> query = session
                 .createQuery(
-                        "from Ranking r where" +
+                        "from Ch3Ranking r where" +
                                 " r.subject.name = :subjectName" +
                                 " and r.observer.name = :observerName" +
                                 " and r.skill.name = :skillName",
-                        Ranking.class
+                        Ch3Ranking.class
                 );
 
         query.setParameter("subjectName", subjectName);

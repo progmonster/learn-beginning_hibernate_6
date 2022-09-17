@@ -21,7 +21,7 @@ public class MergeTest {
 
     @Test
     void testMerge() {
-        SimpleObject obj = new SimpleObject("key1", 123);
+        Ch4SimpleObject obj = new Ch4SimpleObject("key1", 123);
 
         try (Session session = openSession()) {
             session.beginTransaction();
@@ -33,7 +33,7 @@ public class MergeTest {
 
         obj.setValue(234);
 
-        SimpleObject mergedObj;
+        Ch4SimpleObject mergedObj;
 
         try (Session session = openSession()) {
             session.beginTransaction();

@@ -1,12 +1,17 @@
-package org.example.ch3;
+package org.example.ch2;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.util.Objects;
 import java.util.StringJoiner;
 
+
 @Entity
-public class Person {
+public class Ch2Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,12 +19,20 @@ public class Person {
     @Column(unique = true)
     private String name;
 
+    public Ch2Message() {
+        // No-op.
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Ch2Message(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -34,8 +47,8 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) && Objects.equals(name, person.name);
+        Ch2Message message = (Ch2Message) o;
+        return Objects.equals(id, message.id) && Objects.equals(name, message.name);
     }
 
     @Override
@@ -45,7 +58,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Person.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch2Message.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("name='" + name + "'")
                 .toString();

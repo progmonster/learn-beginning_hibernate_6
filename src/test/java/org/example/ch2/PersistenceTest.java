@@ -25,13 +25,13 @@ public class PersistenceTest {
 
     @Test
     void shouldReadMessage() {
-        Message savedMessage = saveMessage("Hello, World!");
+        Ch2Message savedMessage = saveMessage("Hello, World!");
 
-        List<Message> actualMessages;
+        List<Ch2Message> actualMessages;
 
         try(Session session = openSession()) {
             actualMessages = session
-                    .createQuery("from Ch2Message", Message.class)
+                    .createQuery("from Ch2Message", Ch2Message.class)
                     .list();
         }
 
@@ -42,8 +42,8 @@ public class PersistenceTest {
         assertEquals(savedMessage, actualMessages.get(0));
     }
 
-    private Message saveMessage(String text) {
-        Message message = new Message(text);
+    private Ch2Message saveMessage(String text) {
+        Ch2Message message = new Ch2Message(text);
 
         try(Session session = openSession()) {
             Transaction tx = session.beginTransaction();

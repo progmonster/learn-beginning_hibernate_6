@@ -10,8 +10,8 @@ import jakarta.persistence.ManyToOne;
 
 import java.util.StringJoiner;
 
-@Entity(name = "Message")
-public class Message {
+@Entity
+public class Ch4Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,13 +20,13 @@ public class Message {
     private String content;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    private Email email;
+    private Ch4Email email;
 
-    public Message(String content) {
+    public Ch4Message(String content) {
         this.content = content;
     }
 
-    public Message() {
+    public Ch4Message() {
         // No-op.
     }
 
@@ -46,17 +46,17 @@ public class Message {
         this.content = content;
     }
 
-    public Email getEmail() {
+    public Ch4Email getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(Ch4Email email) {
         this.email = email;
     }
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Message.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch4Message.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("content='" + content + "'")
                 .add("email.subject=" + (email == null ? "" : email.getSubject()))

@@ -23,10 +23,10 @@ public class LazyTest {
     void lazyTest_loadingParentEntity() {
         long userId = createAndSaveTestData().getId();
 
-        User loadedUser;
+        Ch5User loadedUser;
 
         try(Session session = openSession()) {
-            loadedUser = session.get(User.class, userId);
+            loadedUser = session.get(Ch5User.class, userId);
         }
 
         assertAll(
@@ -40,14 +40,14 @@ public class LazyTest {
 
     @Test
     void lazyTest_loadingChildEntity() {
-        User user = createAndSaveTestData();
+        Ch5User user = createAndSaveTestData();
 
-        Card card = user.getCards().iterator().next();
+        Ch5Card card = user.getCards().iterator().next();
 
-        Card loadedCard;
+        Ch5Card loadedCard;
 
         try(Session session = openSession()) {
-            loadedCard = session.get(Card.class, card.getId());
+            loadedCard = session.get(Ch5Card.class, card.getId());
         }
 
         assertAll(
@@ -57,8 +57,8 @@ public class LazyTest {
         );
     }
 
-    private static User createAndSaveTestData() {
-        Email email = new Email();
+    private static Ch5User createAndSaveTestData() {
+        Ch5Email email = new Ch5Email();
 
         email.setEmail("john@test.com");
 
@@ -66,13 +66,13 @@ public class LazyTest {
 
         address.setStreet("Test Street");
 
-        User user = new User();
+        Ch5User user = new Ch5User();
 
         user.setName("John");
         user.setEmail(email);
         user.setAddress(address);
 
-        Card card = new Card();
+        Ch5Card card = new Ch5Card();
         card.setNumber("123");
         card.setUser(user);
         user.getCards().add(card);

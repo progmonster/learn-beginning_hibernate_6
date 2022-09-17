@@ -16,8 +16,8 @@ import java.util.StringJoiner;
 import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.CascadeType.REMOVE;
 
-@Entity(name = "users")
-public class User {
+@Entity
+public class Ch5User {
     @Id
     @GeneratedValue
     private Long id;
@@ -26,13 +26,13 @@ public class User {
     private String name;
 
     @OneToOne(cascade = {PERSIST, REMOVE})
-    private Email email;
+    private Ch5Email email;
 
     @Embedded
     private Address address;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = PERSIST)
-    private Set<Card> cards = new HashSet<>();
+    private Set<Ch5Card> cards = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -50,11 +50,11 @@ public class User {
         this.name = name;
     }
 
-    public Email getEmail() {
+    public Ch5Email getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(Ch5Email email) {
         this.email = email;
     }
 
@@ -66,18 +66,18 @@ public class User {
         this.address = address;
     }
 
-    public Set<Card> getCards() {
+    public Set<Ch5Card> getCards() {
         return cards;
     }
 
-    public void setCards(Set<Card> cards) {
+    public void setCards(Set<Ch5Card> cards) {
         this.cards = cards;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User user)) return false;
+        if (!(o instanceof Ch5User user)) return false;
         return Objects.equals(getId(), user.getId()) && Objects.equals(getName(), user.getName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getAddress(), user.getAddress()) && Objects.equals(getCards(), user.getCards());
     }
 
@@ -88,7 +88,7 @@ public class User {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch5User.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("name='" + name + "'")
                 .add("email=" + email)

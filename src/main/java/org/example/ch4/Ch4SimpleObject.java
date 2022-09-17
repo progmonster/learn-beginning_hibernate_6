@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
-public class SimpleObject {
+public class Ch4SimpleObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,11 +21,11 @@ public class SimpleObject {
     @Column(name = "`value`")
     private Integer value;
 
-    public SimpleObject() {
+    public Ch4SimpleObject() {
         // No-op.
     }
 
-    public SimpleObject(String key, Integer value) {
+    public Ch4SimpleObject(String key, Integer value) {
         this.key = key;
         this.value = value;
     }
@@ -57,7 +57,7 @@ public class SimpleObject {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof SimpleObject that)) return false;
+        if (!(o instanceof Ch4SimpleObject that)) return false;
         return Objects.equals(getId(), that.getId()) && Objects.equals(getKey(), that.getKey()) && Objects.equals(getValue(), that.getValue());
     }
 
@@ -68,7 +68,7 @@ public class SimpleObject {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", SimpleObject.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch4SimpleObject.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("key='" + key + "'")
                 .add("value=" + value)

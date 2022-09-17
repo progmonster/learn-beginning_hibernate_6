@@ -19,11 +19,11 @@ public class DeleteTest {
 
     @Test
     void testDelete() {
-        SimpleObject obj1 = new SimpleObject("key1", 123);
+        Ch4SimpleObject obj1 = new Ch4SimpleObject("key1", 123);
 
-        SimpleObject obj2 = new SimpleObject("key2", 234);
+        Ch4SimpleObject obj2 = new Ch4SimpleObject("key2", 234);
 
-        SimpleObject obj3 = new SimpleObject("key3", 345);
+        Ch4SimpleObject obj3 = new Ch4SimpleObject("key3", 345);
 
         try (Session session = openSession()) {
             session.beginTransaction();
@@ -42,14 +42,14 @@ public class DeleteTest {
 
             session.getTransaction().commit();
 
-            assertNull(session.get(SimpleObject.class, obj1.getId()));
+            assertNull(session.get(Ch4SimpleObject.class, obj1.getId()));
         }
 
         try (Session session = openSession()) {
             session.beginTransaction();
 
             int removedAmount = session
-                    .createMutationQuery("delete from SimpleObject so")
+                    .createMutationQuery("delete from Ch4SimpleObject so")
                     .executeUpdate();
 
             session.getTransaction().commit();
@@ -58,7 +58,7 @@ public class DeleteTest {
 
             assertEquals(
                     0,
-                    session.createQuery("from SimpleObject so", SimpleObject.class).list().size()
+                    session.createQuery("from Ch4SimpleObject so", Ch4SimpleObject.class).list().size()
             );
         }
     }

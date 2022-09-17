@@ -8,7 +8,9 @@ import org.junit.jupiter.api.Test;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.example.DatabaseUtils.*;
+import static org.example.DatabaseUtils.openSession;
+import static org.example.DatabaseUtils.reinitializeDatabase;
+import static org.example.DatabaseUtils.uninitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -20,13 +22,13 @@ public class OrphanRemovalTest {
 
     @Test
     void testRemoveOrphan() {
-        Message message = new Message("BrokenMessage");
+        Ch4Message message = new Ch4Message("BrokenMessage");
 
-        Email email = new Email("BrokenSubject");
+        Ch4Email email = new Ch4Email("BrokenSubject");
 
         message.setEmail(email);
 
-        Message message2 = new Message("BrokenMessage2");
+        Ch4Message message2 = new Ch4Message("BrokenMessage2");
 
         message2.setEmail(email);
 
@@ -45,7 +47,7 @@ public class OrphanRemovalTest {
         assertNotNull(message.getEmail());
 
         try (Session session = openSession()) {
-            email = session.get(Email.class, email.getId());
+            email = session.get(Ch4Email.class, email.getId());
 
             assertNotNull(message.getEmail());
             assertEquals(2, email.getMessages().size());
@@ -54,9 +56,9 @@ public class OrphanRemovalTest {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            email = session.get(Email.class, email.getId());
+            email = session.get(Ch4Email.class, email.getId());
 
-            Iterator<Message> messageIter = email.getMessages().iterator();
+            Iterator<Ch4Message> messageIter = email.getMessages().iterator();
 
             messageIter.next();
 
@@ -66,8 +68,8 @@ public class OrphanRemovalTest {
         }
 
         try (Session session = openSession()) {
-            List<Message> messages = session
-                    .createQuery("from Message m", Message.class)
+            List<Ch4Message> messages = session
+                    .createQuery("from Ch4Message m", Ch4Message.class)
                     .list();
 
             assertEquals(1, messages.size());
@@ -76,13 +78,13 @@ public class OrphanRemovalTest {
 
     @Test
     void testRemoveOrphans() {
-        Message message = new Message("BrokenMessage");
+        Ch4Message message = new Ch4Message("BrokenMessage");
 
-        Email email = new Email("BrokenSubject");
+        Ch4Email email = new Ch4Email("BrokenSubject");
 
         message.setEmail(email);
 
-        Message message2 = new Message("BrokenMessage2");
+        Ch4Message message2 = new Ch4Message("BrokenMessage2");
 
         message2.setEmail(email);
 
@@ -101,7 +103,7 @@ public class OrphanRemovalTest {
         assertNotNull(message.getEmail());
 
         try (Session session = openSession()) {
-            email = session.get(Email.class, email.getId());
+            email = session.get(Ch4Email.class, email.getId());
 
             assertNotNull(message.getEmail());
             assertEquals(2, email.getMessages().size());
@@ -111,7 +113,7 @@ public class OrphanRemovalTest {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            email = session.get(Email.class, email.getId());
+            email = session.get(Ch4Email.class, email.getId());
 
             session.remove(email);
 
@@ -119,8 +121,8 @@ public class OrphanRemovalTest {
         }
 
         try (Session session = openSession()) {
-            List<Message> messages = session
-                    .createQuery("from Message m", Message.class)
+            List<Ch4Message> messages = session
+                    .createQuery("from Ch4Message m", Ch4Message.class)
                     .list();
 
             assertEquals(0, messages.size());

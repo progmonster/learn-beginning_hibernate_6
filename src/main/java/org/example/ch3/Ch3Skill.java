@@ -1,12 +1,16 @@
 package org.example.ch3;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
-public class Skill {
+public class Ch3Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -34,7 +38,7 @@ public class Skill {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Skill skill = (Skill) o;
+        Ch3Skill skill = (Ch3Skill) o;
         return Objects.equals(id, skill.id) && Objects.equals(name, skill.name);
     }
 
@@ -45,7 +49,7 @@ public class Skill {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Skill.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch3Skill.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("name='" + name + "'")
                 .toString();

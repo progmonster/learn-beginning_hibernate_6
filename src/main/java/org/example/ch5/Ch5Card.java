@@ -9,13 +9,13 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
-public class Card {
+public class Ch5Card {
     @Id
     @GeneratedValue
     private Long id;
 
     @ManyToOne
-    private User user;
+    private Ch5User user;
 
     private String number;
 
@@ -27,11 +27,11 @@ public class Card {
         this.id = id;
     }
 
-    public User getUser() {
+    public Ch5User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Ch5User user) {
         this.user = user;
     }
 
@@ -46,7 +46,7 @@ public class Card {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Card card)) return false;
+        if (!(o instanceof Ch5Card card)) return false;
         return Objects.equals(getId(), card.getId()) && Objects.equals(getUser().getId(), card.getUser().getId()) && Objects.equals(getNumber(), card.getNumber());
     }
 
@@ -57,7 +57,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Card.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch5Card.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("user=" + user)
                 .add("number='" + number + "'")

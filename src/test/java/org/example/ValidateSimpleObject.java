@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.ch4.SimpleObject;
+import org.example.ch4.Ch4SimpleObject;
 import org.hibernate.Session;
 
 import static org.example.DatabaseUtils.openSession;
@@ -11,13 +11,13 @@ public final class ValidateSimpleObject {
         // No-op.
     }
 
-    public static SimpleObject validate(
+    public static Ch4SimpleObject validate(
             Long id,
             String expectedKey,
             Integer expectedValue
     ) {
         try (Session session = openSession()) {
-            SimpleObject so = new SimpleObject();
+            Ch4SimpleObject so = new Ch4SimpleObject();
 
             session.load(so, id);
 

@@ -20,11 +20,11 @@ public class PersistTest {
 
     @Test
     void testPersistAndEqualityInSessions() {
-        SimpleObject obj1 = new SimpleObject();
+        Ch4SimpleObject obj1 = new Ch4SimpleObject();
 
-        SimpleObject obj2;
+        Ch4SimpleObject obj2;
 
-        SimpleObject obj3;
+        Ch4SimpleObject obj3;
 
         try (Session session = openSession()) {
             session.beginTransaction();
@@ -33,14 +33,14 @@ public class PersistTest {
 
             session.getTransaction().commit();
 
-            obj2 = session.get(SimpleObject.class, obj1.getId());
+            obj2 = session.get(Ch4SimpleObject.class, obj1.getId());
         }
 
         assertEquals(obj1, obj2);
         assertSame(obj1, obj2);
 
         try (Session session = openSession()) {
-            obj3 = session.get(SimpleObject.class, obj1.getId());
+            obj3 = session.get(Ch4SimpleObject.class, obj1.getId());
         }
 
         assertEquals(obj1, obj3);

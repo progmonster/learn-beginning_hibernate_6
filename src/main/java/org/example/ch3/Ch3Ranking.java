@@ -1,24 +1,29 @@
 package org.example.ch3;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
-public class Ranking {
+public class Ch3Ranking {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
-    private Person subject;
+    private Ch3Person subject;
 
     @ManyToOne
-    private Person observer;
+    private Ch3Person observer;
 
     @ManyToOne
-    private Skill skill;
+    private Ch3Skill skill;
 
     @Column
     private int ranking;
@@ -31,27 +36,27 @@ public class Ranking {
         this.id = id;
     }
 
-    public Person getSubject() {
+    public Ch3Person getSubject() {
         return subject;
     }
 
-    public void setSubject(Person subject) {
+    public void setSubject(Ch3Person subject) {
         this.subject = subject;
     }
 
-    public Person getObserver() {
+    public Ch3Person getObserver() {
         return observer;
     }
 
-    public void setObserver(Person observer) {
+    public void setObserver(Ch3Person observer) {
         this.observer = observer;
     }
 
-    public Skill getSkill() {
+    public Ch3Skill getSkill() {
         return skill;
     }
 
-    public void setSkill(Skill skill) {
+    public void setSkill(Ch3Skill skill) {
         this.skill = skill;
     }
 
@@ -67,7 +72,7 @@ public class Ranking {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Ranking ranking1 = (Ranking) o;
+        Ch3Ranking ranking1 = (Ch3Ranking) o;
         return ranking == ranking1.ranking && Objects.equals(id, ranking1.id);
     }
 
@@ -78,7 +83,7 @@ public class Ranking {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Ranking.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch3Ranking.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("subject=" + subject)
                 .add("observer=" + observer)

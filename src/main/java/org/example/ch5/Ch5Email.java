@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@Entity(name = "emails")
-public class Email {
+@Entity
+public class Ch5Email {
     @Id
     @GeneratedValue
     private Long id;
@@ -36,7 +36,7 @@ public class Email {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Email email1)) return false;
+        if (!(o instanceof Ch5Email email1)) return false;
         return Objects.equals(getId(), email1.getId()) && getEmail().equals(email1.getEmail());
     }
 
@@ -47,7 +47,7 @@ public class Email {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Email.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch5Email.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("email='" + email + "'")
                 .toString();

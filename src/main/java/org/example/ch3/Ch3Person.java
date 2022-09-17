@@ -1,4 +1,4 @@
-package org.example.ch2;
+package org.example.ch3;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,9 +9,8 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-
-@Entity(name = "Ch2Message")
-public class Message {
+@Entity
+public class Ch3Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,20 +18,12 @@ public class Message {
     @Column(unique = true)
     private String name;
 
-    public Message() {
-        // No-op.
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Message(String name) {
-        this.name = name;
     }
 
     public String getName() {
@@ -47,8 +38,8 @@ public class Message {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Message message = (Message) o;
-        return Objects.equals(id, message.id) && Objects.equals(name, message.name);
+        Ch3Person person = (Ch3Person) o;
+        return Objects.equals(id, person.id) && Objects.equals(name, person.name);
     }
 
     @Override
@@ -58,7 +49,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Message.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Ch3Person.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("name='" + name + "'")
                 .toString();

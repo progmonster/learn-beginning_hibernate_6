@@ -19,7 +19,7 @@ public class FlushTest {
 
     @Test
     void testIsDirtyAndFlush() {
-        SimpleObject obj = new SimpleObject("key1", 123);
+        Ch4SimpleObject obj = new Ch4SimpleObject("key1", 123);
 
         try (Session session = openSession()) {
             session.beginTransaction();
