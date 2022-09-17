@@ -20,6 +20,9 @@
         <mapping class="org.example.ch5.Ch5User"/>
         <mapping class="org.example.ch5.Ch5Email"/>
         <mapping class="org.example.ch5.Ch5Card"/>
+        <mapping class="org.example.ch5.Ch5ComplexIndexEntity1"/>
+        <mapping class="org.example.ch5.Ch5ComplexIndexEntity2"/>
+        <mapping class="org.example.ch5.Ch5ComplexIndexEntity3"/>
     </session-factory>
 </hibernate-configuration>
 
