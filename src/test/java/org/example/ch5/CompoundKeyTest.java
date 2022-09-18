@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.example.DatabaseUtils.openSession;
 import static org.example.DatabaseUtils.reinitializeDatabase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CompoundKeyTest {
     @BeforeEach
@@ -24,9 +26,18 @@ public class CompoundKeyTest {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            session.persist(new Ch5ComplexIndexEntity1(new CompoundId1("abc", "123"), "content"));
+            session.persist(new Ch5ComplexIndexEntity1(new CompoundId1("aaa", "111"), "content1"));
 
             session.getTransaction().commit();
+        }
+
+        try (Session session = openSession()) {
+            Ch5ComplexIndexEntity1 loadedEntity = session
+                    .byId(Ch5ComplexIndexEntity1.class)
+                    .load(new CompoundId1("aaa", "111"));
+
+            assertNotNull(loadedEntity);
+            assertEquals("content1", loadedEntity.getContent());
         }
     }
 
@@ -35,9 +46,18 @@ public class CompoundKeyTest {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            session.persist(new Ch5ComplexIndexEntity2(new CompoundId2("abc", "123"), "content"));
+            session.persist(new Ch5ComplexIndexEntity2(new CompoundId2("bbb", "222"), "content2"));
 
             session.getTransaction().commit();
+        }
+
+        try (Session session = openSession()) {
+            Ch5ComplexIndexEntity2 loadedEntity = session
+                    .byId(Ch5ComplexIndexEntity2.class)
+                    .load(new CompoundId2("bbb", "222"));
+
+            assertNotNull(loadedEntity);
+            assertEquals("content2", loadedEntity.getContent());
         }
     }
 
@@ -46,9 +66,18 @@ public class CompoundKeyTest {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            session.persist(new Ch5ComplexIndexEntity3("abc", "123", "content"));
+            session.persist(new Ch5ComplexIndexEntity3("ccc", "333", "content3"));
 
             session.getTransaction().commit();
+        }
+
+        try (Session session = openSession()) {
+            Ch5ComplexIndexEntity3 loadedEntity = session
+                    .byId(Ch5ComplexIndexEntity3.class)
+                    .load(new CompoundId3("ccc", "333"));
+
+            assertNotNull(loadedEntity);
+            assertEquals("content3", loadedEntity.getContent());
         }
     }
 }
