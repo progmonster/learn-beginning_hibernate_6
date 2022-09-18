@@ -1,5 +1,11 @@
 package org.example.ch5;
 
+import org.example.ch6.Ch6ComplexIndexEntity1;
+import org.example.ch6.Ch6ComplexIndexEntity2;
+import org.example.ch6.Ch6ComplexIndexEntity3;
+import org.example.ch6.CompoundId1;
+import org.example.ch6.CompoundId2;
+import org.example.ch6.CompoundId3;
 import org.hibernate.Session;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.example.DatabaseUtils.openSession;
 import static org.example.DatabaseUtils.reinitializeDatabase;
+import static org.example.DatabaseUtils.uninitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -18,7 +25,7 @@ public class CompoundKeyTest {
 
     @AfterEach
     void tearDown() {
-//        uninitializeDatabase();
+        uninitializeDatabase();
     }
 
     @Test
@@ -26,14 +33,14 @@ public class CompoundKeyTest {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            session.persist(new Ch5ComplexIndexEntity1(new CompoundId1("aaa", "111"), "content1"));
+            session.persist(new Ch6ComplexIndexEntity1(new CompoundId1("aaa", "111"), "content1"));
 
             session.getTransaction().commit();
         }
 
         try (Session session = openSession()) {
-            Ch5ComplexIndexEntity1 loadedEntity = session
-                    .byId(Ch5ComplexIndexEntity1.class)
+            Ch6ComplexIndexEntity1 loadedEntity = session
+                    .byId(Ch6ComplexIndexEntity1.class)
                     .load(new CompoundId1("aaa", "111"));
 
             assertNotNull(loadedEntity);
@@ -46,14 +53,14 @@ public class CompoundKeyTest {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            session.persist(new Ch5ComplexIndexEntity2(new CompoundId2("bbb", "222"), "content2"));
+            session.persist(new Ch6ComplexIndexEntity2(new CompoundId2("bbb", "222"), "content2"));
 
             session.getTransaction().commit();
         }
 
         try (Session session = openSession()) {
-            Ch5ComplexIndexEntity2 loadedEntity = session
-                    .byId(Ch5ComplexIndexEntity2.class)
+            Ch6ComplexIndexEntity2 loadedEntity = session
+                    .byId(Ch6ComplexIndexEntity2.class)
                     .load(new CompoundId2("bbb", "222"));
 
             assertNotNull(loadedEntity);
@@ -66,14 +73,14 @@ public class CompoundKeyTest {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            session.persist(new Ch5ComplexIndexEntity3("ccc", "333", "content3"));
+            session.persist(new Ch6ComplexIndexEntity3("ccc", "333", "content3"));
 
             session.getTransaction().commit();
         }
 
         try (Session session = openSession()) {
-            Ch5ComplexIndexEntity3 loadedEntity = session
-                    .byId(Ch5ComplexIndexEntity3.class)
+            Ch6ComplexIndexEntity3 loadedEntity = session
+                    .byId(Ch6ComplexIndexEntity3.class)
                     .load(new CompoundId3("ccc", "333"));
 
             assertNotNull(loadedEntity);

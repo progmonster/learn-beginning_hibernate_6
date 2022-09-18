@@ -1,4 +1,4 @@
-package org.example.ch5;
+package org.example.ch6;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,7 +7,7 @@ import jakarta.persistence.IdClass;
 
 @Entity
 @IdClass(CompoundId3.class)
-public class Ch5ComplexIndexEntity3 {
+public class Ch6ComplexIndexEntity3 {
     @Id
     private String key1;
 
@@ -17,10 +17,10 @@ public class Ch5ComplexIndexEntity3 {
     @Column
     private String content;
 
-    public Ch5ComplexIndexEntity3() {
+    public Ch6ComplexIndexEntity3() {
     }
 
-    public Ch5ComplexIndexEntity3(String key1, String key2, String content) {
+    public Ch6ComplexIndexEntity3(String key1, String key2, String content) {
         this.key1 = key1;
         this.key2 = key2;
         this.content = content;

@@ -1,18 +1,21 @@
-package org.example.ch5;
+package org.example.ch6;
+
+import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class CompoundId3 implements Serializable {
+@Embeddable
+public class CompoundId1 implements Serializable {
     private String key1;
 
     private String key2;
 
-    public CompoundId3() {
+    public CompoundId1() {
     }
 
-    public CompoundId3(String key1, String key2) {
+    public CompoundId1(String key1, String key2) {
         this.key1 = key1;
         this.key2 = key2;
     }
@@ -36,7 +39,7 @@ public class CompoundId3 implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CompoundId3 that)) return false;
+        if (!(o instanceof CompoundId1 that)) return false;
         return Objects.equals(getKey1(), that.getKey1()) && Objects.equals(getKey2(), that.getKey2());
     }
 
@@ -47,7 +50,7 @@ public class CompoundId3 implements Serializable {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", CompoundId3.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", CompoundId1.class.getSimpleName() + "[", "]")
                 .add("key1='" + key1 + "'")
                 .add("key2='" + key2 + "'")
                 .toString();

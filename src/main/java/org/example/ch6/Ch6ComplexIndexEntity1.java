@@ -1,30 +1,30 @@
-package org.example.ch5;
+package org.example.ch6;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
-public class Ch5ComplexIndexEntity2 {
-    @EmbeddedId
-    private CompoundId2 id;
+public class Ch6ComplexIndexEntity1 {
+    @Id
+    private CompoundId1 id;
 
     @Column
     private String content;
 
-    public Ch5ComplexIndexEntity2() {
+    public Ch6ComplexIndexEntity1() {
     }
 
-    public Ch5ComplexIndexEntity2(CompoundId2 id, String content) {
+    public Ch6ComplexIndexEntity1(CompoundId1 id, String content) {
         this.id = id;
         this.content = content;
     }
 
-    public CompoundId2 getId() {
+    public CompoundId1 getId() {
         return id;
     }
 
-    public void setId(CompoundId2 id) {
+    public void setId(CompoundId1 id) {
         this.id = id;
     }
 

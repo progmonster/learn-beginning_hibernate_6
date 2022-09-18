@@ -1,4 +1,4 @@
-package org.example.ch5;
+package org.example.ch6;
 
 import java.io.Serializable;
 import java.util.Objects;
