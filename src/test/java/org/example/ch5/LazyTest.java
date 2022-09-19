@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.example.DatabaseUtils.openSession;
 import static org.example.DatabaseUtils.reinitializeDatabase;
-import static org.example.DatabaseUtils.uninitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
@@ -90,6 +89,6 @@ public class LazyTest {
 
     @AfterEach
     void tearDown() {
-        uninitializeDatabase();
+        //uninitializeDatabase();
     }
 }

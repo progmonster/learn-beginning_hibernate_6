@@ -1,5 +1,7 @@
 package org.example.ch5;
 
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -29,6 +31,9 @@ public class Ch5User {
     private Ch5Email email;
 
     @Embedded
+    @AttributeOverrides(
+            {@AttributeOverride(name = "street", column = @Column(name = "address_line_1"))}
+    )
     private Address address;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = PERSIST)

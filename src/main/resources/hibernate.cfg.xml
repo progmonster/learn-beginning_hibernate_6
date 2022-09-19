@@ -18,15 +18,17 @@
         <mapping class="org.example.ch4.Ch4Message"/>
         <mapping class="org.example.ch4.Ch4Email"/>
         <mapping class="org.example.ch4.Ch4SimpleObject"/>
-        <mapping class="org.example.ch5.Ch5User"/>
-        <mapping class="org.example.ch5.Ch5Email"/>
-        <mapping class="org.example.ch5.Ch5Card"/>
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity1"/>
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity2"/>
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity3"/>
-        <mapping class="org.example.ch6.Ch6SplittedEntity"/>
 -->
-        <mapping class="org.example.ch6.Ch6BasicMappingEntity"/>
+        <mapping class="org.example.ch5.Ch5User"/>
+                <mapping class="org.example.ch5.Ch5Email"/>
+                <mapping class="org.example.ch5.Ch5Card"/>
+        <!--
+                <mapping class="org.example.ch6.Ch6ComplexIndexEntity1"/>
+                <mapping class="org.example.ch6.Ch6ComplexIndexEntity2"/>
+                <mapping class="org.example.ch6.Ch6ComplexIndexEntity3"/>
+                <mapping class="org.example.ch6.Ch6SplittedEntity"/>
+                <mapping class="org.example.ch6.Ch6BasicMappingEntity"/>
+        -->
     </session-factory>
 </hibernate-configuration>
 
