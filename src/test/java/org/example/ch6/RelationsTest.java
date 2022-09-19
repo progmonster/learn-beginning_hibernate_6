@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.example.DatabaseUtils.reinitializeDatabase;
+import static org.example.DatabaseUtils.uninitializeDatabase;
 
 class RelationsTest {
     @BeforeEach
@@ -14,7 +15,7 @@ class RelationsTest {
 
     @AfterEach
     void tearDown() {
-        //uninitializeDatabase();
+        uninitializeDatabase();
     }
 
     @Test

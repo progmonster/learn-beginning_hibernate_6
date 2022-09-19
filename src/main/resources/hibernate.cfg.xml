@@ -10,25 +10,34 @@
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">create-drop</property>
-<!--
-        <mapping class="org.example.ch2.Ch2Message"/>
-        <mapping class="org.example.ch3.Ch3Person"/>
-        <mapping class="org.example.ch3.Ch3Skill"/>
-        <mapping class="org.example.ch3.Ch3Ranking"/>
-        <mapping class="org.example.ch4.Ch4Message"/>
-        <mapping class="org.example.ch4.Ch4Email"/>
-        <mapping class="org.example.ch4.Ch4SimpleObject"/>
-        <mapping class="org.example.ch5.Ch5User"/>
-        <mapping class="org.example.ch5.Ch5Email"/>
-        <mapping class="org.example.ch5.Ch5Card"/>
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity1"/>
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity2"/>
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity3"/>
-        <mapping class="org.example.ch6.Ch6SplittedEntity"/>
-        <mapping class="org.example.ch6.Ch6BasicMappingEntity"/>
-        -->
-        <mapping class="org.example.ch6.Ch6Publisher"/>
-        <mapping class="org.example.ch6.Ch6Book"/>
+        <!--
+                <mapping class="org.example.ch2.Ch2Message"/>
+                <mapping class="org.example.ch3.Ch3Person"/>
+                <mapping class="org.example.ch3.Ch3Skill"/>
+                <mapping class="org.example.ch3.Ch3Ranking"/>
+                <mapping class="org.example.ch4.Ch4Message"/>
+                <mapping class="org.example.ch4.Ch4Email"/>
+                <mapping class="org.example.ch4.Ch4SimpleObject"/>
+                <mapping class="org.example.ch5.Ch5User"/>
+                <mapping class="org.example.ch5.Ch5Email"/>
+                <mapping class="org.example.ch5.Ch5Card"/>
+                <mapping class="org.example.ch6.Ch6ComplexIndexEntity1"/>
+                <mapping class="org.example.ch6.Ch6ComplexIndexEntity2"/>
+                <mapping class="org.example.ch6.Ch6ComplexIndexEntity3"/>
+                <mapping class="org.example.ch6.Ch6SplittedEntity"/>
+                <mapping class="org.example.ch6.Ch6BasicMappingEntity"/>
+                <mapping class="org.example.ch6.Ch6Publisher"/>
+                <mapping class="org.example.ch6.Ch6Book"/>
+                -->
+        <mapping class="org.example.ch6.Ch6SingleBase"/>
+        <mapping class="org.example.ch6.Ch6SingleFoo"/>
+        <mapping class="org.example.ch6.Ch6SingleBoo"/>
+        <mapping class="org.example.ch6.Ch6JoinedBase"/>
+        <mapping class="org.example.ch6.Ch6JoinedFoo"/>
+        <mapping class="org.example.ch6.Ch6JoinedBoo"/>
+        <mapping class="org.example.ch6.Ch6PerClassBase"/>
+        <mapping class="org.example.ch6.Ch6PerClassFoo"/>
+        <mapping class="org.example.ch6.Ch6PerClassBoo"/>
     </session-factory>
 </hibernate-configuration>
 
