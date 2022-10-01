@@ -28,7 +28,6 @@
                 <mapping class="org.example.ch6.Ch6BasicMappingEntity"/>
                 <mapping class="org.example.ch6.Ch6Publisher"/>
                 <mapping class="org.example.ch6.Ch6Book"/>
-                -->
         <mapping class="org.example.ch6.Ch6SingleBase"/>
         <mapping class="org.example.ch6.Ch6SingleFoo"/>
         <mapping class="org.example.ch6.Ch6SingleBoo"/>
@@ -38,6 +37,9 @@
         <mapping class="org.example.ch6.Ch6PerClassBase"/>
         <mapping class="org.example.ch6.Ch6PerClassFoo"/>
         <mapping class="org.example.ch6.Ch6PerClassBoo"/>
+        <mapping class="org.example.ch6.Ch6Customer"/>
+        <mapping class="org.example.ch6.Ch6Payment"/>
+                -->
     </session-factory>
 </hibernate-configuration>
 
