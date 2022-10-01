@@ -40,6 +40,7 @@
         <mapping class="org.example.ch6.Ch6Customer"/>
         <mapping class="org.example.ch6.Ch6Payment"/>
                 -->
+        <mapping class="org.example.ch6.Ch6TemporalEntity"/>
     </session-factory>
 </hibernate-configuration>
 
