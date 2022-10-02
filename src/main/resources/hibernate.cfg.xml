@@ -39,8 +39,9 @@
         <mapping class="org.example.ch6.Ch6PerClassBoo"/>
         <mapping class="org.example.ch6.Ch6Customer"/>
         <mapping class="org.example.ch6.Ch6Payment"/>
-                -->
         <mapping class="org.example.ch6.Ch6TemporalEntity"/>
+                -->
+        <mapping class="org.example.ch6.Ch6LobEntity"/>
     </session-factory>
 </hibernate-configuration>
 
