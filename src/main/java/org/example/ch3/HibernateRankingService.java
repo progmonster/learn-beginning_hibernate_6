@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.summarizingInt;
 import static java.util.stream.Collectors.toMap;
-import static org.example.DatabaseUtils.openSession;
+import static org.example.HibernateUtils.openSession;
 
 public class HibernateRankingService implements RankingService {
     @Override

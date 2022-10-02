@@ -12,6 +12,7 @@
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hibernate.core.version>6.1.2.Final</hibernate.core.version>
     </properties>
 
     <dependencyManagement>
@@ -37,13 +38,13 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.1.2.Final</version>
+            <version>${hibernate.core.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-hikaricp</artifactId>
-            <version>6.1.2.Final</version>
+            <version>${hibernate.core.version}</version>
         </dependency>
 
         <dependency>

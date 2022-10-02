@@ -5,9 +5,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.example.DatabaseUtils.openSession;
-import static org.example.DatabaseUtils.reinitializeDatabase;
-import static org.example.DatabaseUtils.uninitializeDatabase;
+import static org.example.HibernateUtils.openSession;
+import static org.example.HibernateUtils.reinitializeDatabase;
+import static org.example.HibernateUtils.uninitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 

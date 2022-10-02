@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static org.example.DatabaseUtils.reinitializeDatabase;
-import static org.example.DatabaseUtils.uninitializeDatabase;
+import static org.example.HibernateUtils.reinitializeDatabase;
+import static org.example.HibernateUtils.uninitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RankingTest {

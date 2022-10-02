@@ -3,7 +3,7 @@ package org.example;
 import org.example.ch4.Ch4SimpleObject;
 import org.hibernate.Session;
 
-import static org.example.DatabaseUtils.openSession;
+import static org.example.HibernateUtils.openSession;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class ValidateSimpleObject {

@@ -4,8 +4,8 @@ import org.hibernate.Session;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.example.DatabaseUtils.openSession;
-import static org.example.DatabaseUtils.reinitializeDatabase;
+import static org.example.HibernateUtils.openSession;
+import static org.example.HibernateUtils.reinitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class NaturalIdTest {
