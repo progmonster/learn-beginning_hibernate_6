@@ -4,41 +4,42 @@ import org.hibernate.Session;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.example.DatabaseUtils.openSession;
 import static org.example.DatabaseUtils.reinitializeDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class NamedQueryTest {
+public class NaturalIdTest {
     @BeforeEach
     void setUp() {
         reinitializeDatabase();
     }
 
     @Test
-    void testNamedQuery() {
-        Ch6User johnDoe;
-
+    void testNaturalIds() {
         try (Session session = openSession()) {
             session.beginTransaction();
 
-            johnDoe = new Ch6User("John", "Doe");
+            Ch6User johnDoe = new Ch6User("John", "Doe", "123");
 
             session.persist(johnDoe);
-            session.persist(new Ch6User("Bob", "Smith"));
+            session.persist(new Ch6User("Bob", "Smith", "345"));
 
             session.getTransaction().commit();
         }
 
         try (Session session = openSession()) {
-            List<Ch6User> result = session
-                    .createNamedQuery("findByLastNameAsc", Ch6User.class)
-                    .setParameter("lastName", "Doe")
-                    .list();
+            var bob = session.bySimpleNaturalId(Ch6User.class).load("345");
 
-            assertEquals(1, result.size());
-            assertEquals(johnDoe, result.get(0));
+            assertEquals("Bob", bob.getFirstName());
+            assertEquals("345", bob.getInn());
+
+            var john = session
+                    .byNaturalId(Ch6User.class)
+                    .using("inn", "123")
+                    .getReference();
+
+            assertEquals("John", john.getFirstName());
+            assertEquals("123", john.getInn());
         }
     }
 }

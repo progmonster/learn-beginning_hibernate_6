@@ -7,6 +7,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NaturalId;
 
 @Data
 @Entity
@@ -26,8 +27,17 @@ public class Ch6User {
 
     private String lastName;
 
+    @NaturalId
+    private String inn;
+
     public Ch6User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Ch6User(String firstName, String lastName, String inn) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.inn = inn;
     }
 }
