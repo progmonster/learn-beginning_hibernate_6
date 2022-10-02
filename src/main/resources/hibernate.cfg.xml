@@ -41,8 +41,9 @@
         <mapping class="org.example.ch6.Ch6Payment"/>
         <mapping class="org.example.ch6.Ch6TemporalEntity"/>
         <mapping class="org.example.ch6.Ch6LobEntity"/>
-                -->
         <mapping class="org.example.ch6.Ch6DerivedEntity"/>
+                -->
+        <mapping class="org.example.ch6.Ch6User"/>
     </session-factory>
 </hibernate-configuration>
 
