@@ -9,6 +9,7 @@
         <property name="password"/>
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
         <property name="show_sql">true</property>
+        <property name="use_sql_comments">true</property>
         <property name="hbm2ddl.auto">create-drop</property>
         <!--
                 <mapping class="org.example.ch2.Ch2Message"/>
@@ -42,8 +43,9 @@
         <mapping class="org.example.ch6.Ch6TemporalEntity"/>
         <mapping class="org.example.ch6.Ch6LobEntity"/>
         <mapping class="org.example.ch6.Ch6DerivedEntity"/>
-                -->
         <mapping class="org.example.ch6.Ch6User"/>
+                -->
+        <mapping class="org.example.ch9.Ch9Foo"/>
     </session-factory>
 </hibernate-configuration>
 

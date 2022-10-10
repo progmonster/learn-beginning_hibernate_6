@@ -15,11 +15,12 @@ public final class JpaUtils {
     }
 
     private static synchronized EntityManager getEntityManager(String persistenceUnitName) {
-        persistenceUnits.putIfAbsent(persistenceUnitName, Persistence.createEntityManagerFactory(persistenceUnitName));
+        var entityManagerFactory = persistenceUnits.computeIfAbsent(
+                persistenceUnitName,
+                Persistence::createEntityManagerFactory
+        );
 
-        return persistenceUnits
-                .get(persistenceUnitName)
-                .createEntityManager();
+        return entityManagerFactory.createEntityManager();
     }
 
     public static synchronized EntityManager getEntityManager() {

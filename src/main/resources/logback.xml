@@ -4,13 +4,13 @@
             class="ch.qos.logback.core.ConsoleAppender"
     >
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} -%msg%n</pattern>
+            <pattern>%highlight(%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} %msg%n)</pattern>
         </encoder>
     </appender>
 
     <logger
             name="org.hibernate.SQL"
-            level="trace"
+            level="debug"
             additivity="false"
     >
         <appender-ref ref="STDOUT"/>
@@ -18,7 +18,7 @@
 
     <logger
             name="org.hibernate.engine.query"
-            level="trace"
+            level="debug"
             additivity="false"
     >
         <appender-ref ref="STDOUT"/>
@@ -26,7 +26,7 @@
 
     <logger
             name="org.hibernate.type"
-            level="trace"
+            level="debug"
             additivity="false"
     >
         <appender-ref ref="STDOUT"/>
@@ -34,7 +34,7 @@
 
     <logger
             name="org.hibernate.jdbc"
-            level="trace"
+            level="debug"
             additivity="false"
     >
         <appender-ref ref="STDOUT"/>
@@ -42,7 +42,7 @@
 
     <logger
             name="org.hibernate.type.descriptor.sql"
-            level="trace"
+            level="debug"
             additivity="false"
     >
         <appender-ref ref="STDOUT"/>
