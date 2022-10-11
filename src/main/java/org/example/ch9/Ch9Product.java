@@ -9,6 +9,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.Instant;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -22,6 +24,8 @@ public class Ch9Product {
     private String title;
 
     private int price;
+
+    private Instant timestamp = Instant.now();
 
     @ManyToOne
     private Ch9Supplier supplier;

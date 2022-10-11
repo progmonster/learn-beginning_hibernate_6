@@ -26,10 +26,17 @@ public class Ch9Supplier {
 
     private String title;
 
+    private int rank;
+
     @OneToMany(mappedBy="supplier", cascade = ALL, orphanRemoval = true)
     private Set<Ch9Product> products = new HashSet<>();
 
     public Ch9Supplier(String title) {
         this.title = title;
+    }
+
+    public Ch9Supplier(String title, int rank) {
+        this.title = title;
+        this.rank = rank;
     }
 }
