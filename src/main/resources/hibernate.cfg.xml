@@ -45,9 +45,12 @@
         <mapping class="org.example.ch6.Ch6DerivedEntity"/>
         <mapping class="org.example.ch6.Ch6User"/>
         <mapping class="org.example.ch9.Ch9Foo"/>
-                -->
         <mapping class="org.example.ch9.Ch9Product"/>
         <mapping class="org.example.ch9.Ch9Supplier"/>
+                -->
+        <mapping class="org.example.ch10.C10User"/>
+        <mapping class="org.example.ch10.C10Form"/>
+        <mapping package="org.example.ch10" />
     </session-factory>
 </hibernate-configuration>
 
