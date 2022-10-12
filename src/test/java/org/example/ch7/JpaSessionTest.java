@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class JpaSessionTest {
     @Test
     public void testJpaSession() {
-        EntityManager em = JpaUtils.getEntityManager();
+        EntityManager em = JpaUtils.getJpaEntityManager();
 
         try {
             em.getTransaction().begin();

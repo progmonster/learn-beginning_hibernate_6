@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.example.HibernateUtils.openSession;
 import static org.example.HibernateUtils.reinitializeDatabase;
-import static org.example.JpaUtils.getEntityManager;
+import static org.example.JpaUtils.getJpaEntityManager;
 
 @Slf4j
 public class UpdateAndCommentTests {
@@ -78,7 +78,7 @@ public class UpdateAndCommentTests {
     public void testUpdateVersionedJpa() {
         long fooId;
 
-        EntityManager em = getEntityManager();
+        EntityManager em = getJpaEntityManager();
 
         try {
             em.getTransaction().begin();
@@ -96,7 +96,7 @@ public class UpdateAndCommentTests {
 
         logPersistedEntity(fooId);
 
-        em = getEntityManager();
+        em = getJpaEntityManager();
 
         try {
             em.getTransaction().begin();
