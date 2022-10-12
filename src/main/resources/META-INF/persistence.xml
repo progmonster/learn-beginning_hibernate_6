@@ -8,7 +8,7 @@
         version="2.0"
 >
     <persistence-unit name="utiljpa">
-        <class>org.example.ch7.Ch7Role</class>
+        <class>learn.beginning_hibernate_6.ch7.Ch7Role</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:./db1;AUTO_SERVER=TRUE" />

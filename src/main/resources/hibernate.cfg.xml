@@ -12,53 +12,53 @@
         <property name="use_sql_comments">true</property>
         <property name="hbm2ddl.auto">create-drop</property>
 
-        <mapping class="org.example.ch2.Ch2Message"/>
+        <mapping class="learn.beginning_hibernate_6.ch2.Ch2Message"/>
 
-        <mapping class="org.example.ch3.Ch3Person"/>
-        <mapping class="org.example.ch3.Ch3Skill"/>
-        <mapping class="org.example.ch3.Ch3Ranking"/>
+        <mapping class="learn.beginning_hibernate_6.ch3.Ch3Person"/>
+        <mapping class="learn.beginning_hibernate_6.ch3.Ch3Skill"/>
+        <mapping class="learn.beginning_hibernate_6.ch3.Ch3Ranking"/>
 
-        <mapping class="org.example.ch4.Ch4Message"/>
-        <mapping class="org.example.ch4.Ch4Email"/>
-        <mapping class="org.example.ch4.Ch4SimpleObject"/>
+        <mapping class="learn.beginning_hibernate_6.ch4.Ch4Message"/>
+        <mapping class="learn.beginning_hibernate_6.ch4.Ch4Email"/>
+        <mapping class="learn.beginning_hibernate_6.ch4.Ch4SimpleObject"/>
 
-        <mapping class="org.example.ch5.Ch5User"/>
-        <mapping class="org.example.ch5.Ch5Email"/>
-        <mapping class="org.example.ch5.Ch5Card"/>
+        <mapping class="learn.beginning_hibernate_6.ch5.Ch5User"/>
+        <mapping class="learn.beginning_hibernate_6.ch5.Ch5Email"/>
+        <mapping class="learn.beginning_hibernate_6.ch5.Ch5Card"/>
 
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity1"/>
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity2"/>
-        <mapping class="org.example.ch6.Ch6ComplexIndexEntity3"/>
-        <mapping class="org.example.ch6.Ch6SplittedEntity"/>
-        <mapping class="org.example.ch6.Ch6BasicMappingEntity"/>
-        <mapping class="org.example.ch6.Ch6Publisher"/>
-        <mapping class="org.example.ch6.Ch6Book"/>
-        <mapping class="org.example.ch6.Ch6SingleBase"/>
-        <mapping class="org.example.ch6.Ch6SingleFoo"/>
-        <mapping class="org.example.ch6.Ch6SingleBoo"/>
-        <mapping class="org.example.ch6.Ch6JoinedBase"/>
-        <mapping class="org.example.ch6.Ch6JoinedFoo"/>
-        <mapping class="org.example.ch6.Ch6JoinedBoo"/>
-        <mapping class="org.example.ch6.Ch6PerClassBase"/>
-        <mapping class="org.example.ch6.Ch6PerClassFoo"/>
-        <mapping class="org.example.ch6.Ch6PerClassBoo"/>
-        <mapping class="org.example.ch6.Ch6Customer"/>
-        <mapping class="org.example.ch6.Ch6Payment"/>
-        <mapping class="org.example.ch6.Ch6TemporalEntity"/>
-        <mapping class="org.example.ch6.Ch6LobEntity"/>
-        <mapping class="org.example.ch6.Ch6DerivedEntity"/>
-        <mapping class="org.example.ch6.Ch6User"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6ComplexIndexEntity1"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6ComplexIndexEntity2"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6ComplexIndexEntity3"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6SplittedEntity"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6BasicMappingEntity"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6Publisher"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6Book"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6SingleBase"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6SingleFoo"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6SingleBoo"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6JoinedBase"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6JoinedFoo"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6JoinedBoo"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6PerClassBase"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6PerClassFoo"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6PerClassBoo"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6Customer"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6Payment"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6TemporalEntity"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6LobEntity"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6DerivedEntity"/>
+        <mapping class="learn.beginning_hibernate_6.ch6.Ch6User"/>
 
-        <mapping class="org.example.ch7.Ch7User"/>
-        <mapping class="org.example.ch7.Ch7Role"/>
+        <mapping class="learn.beginning_hibernate_6.ch7.Ch7User"/>
+        <mapping class="learn.beginning_hibernate_6.ch7.Ch7Role"/>
 
-        <mapping class="org.example.ch9.Ch9Foo"/>
-        <mapping class="org.example.ch9.Ch9Product"/>
-        <mapping class="org.example.ch9.Ch9Supplier"/>
+        <mapping class="learn.beginning_hibernate_6.ch9.Ch9Foo"/>
+        <mapping class="learn.beginning_hibernate_6.ch9.Ch9Product"/>
+        <mapping class="learn.beginning_hibernate_6.ch9.Ch9Supplier"/>
 
-        <mapping class="org.example.ch10.C10User"/>
-        <mapping class="org.example.ch10.C10Form"/>
-        <mapping package="org.example.ch10" />
+        <mapping class="learn.beginning_hibernate_6.ch10.C10User"/>
+        <mapping class="learn.beginning_hibernate_6.ch10.C10Form"/>
+        <mapping package="learn.beginning_hibernate_6.ch10" />
     </session-factory>
 </hibernate-configuration>
 
