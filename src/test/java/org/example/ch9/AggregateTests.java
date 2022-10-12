@@ -86,7 +86,7 @@ public class AggregateTests {
 
         Ch9Product p5 = new Ch9Product("product5", 5000);
 
-        p5.setTimestamp(null);
+        p5.setRating(null);
 
         withTransaction(session -> {
             s1.getProducts().add(p1);
@@ -115,7 +115,7 @@ public class AggregateTests {
                     .getSingleResult();
 
             long actualProductTimestampsCount = session
-                    .createQuery("select count(p.timestamp) from Ch9Product p", long.class)
+                    .createQuery("select count(p.rating) from Ch9Product p", long.class)
                     .getSingleResult();
 
             long actualRelatedSuppliersCount = session
